@@ -1,0 +1,54 @@
+Create table Empresa(
+	co_ruc       char(11) PRIMARY KEY not null,
+	no_razonS    varchar(50) not null,
+	no_direccion varchar(60) not null,
+	tx_correo    varchar(40) not null,
+	nu_telefono  varchar(50) not null,
+	no_rubro     varchar(60)
+);
+
+Create table PersonalAutorizado(
+	co_dni         char(8) PRIMARY KEY not null,
+	no_nombres     varchar(35) not null,
+	no_apellidoPat varchar(50) not null,
+	no_apellidoMat varchar(50) not null,
+	nu_telefono    varchar(50) not null,
+	tx_correo      varchar(40) not null,
+	tx_estado      char(1) not null,
+	fe_fechRegistro date,
+	co_rucEmp       char(11)
+);
+
+Create table Linea(
+	nu_linea  varchar(15) PRIMARY KEY not null,
+	co_IdPlan char(8) null,
+	nu_estado char(1)not null,
+	fe_fechEstado datetime not null,
+	co_rucEmp char(11) null
+);
+
+
+Insert into Empresa values('20125845678','PERUANA DE INFORMATICA S.A.C.','Calle OcatvioMuñoz Najar N° 223B','jmedina@peruanainf.com.pe','996687780','TI');
+Insert into Empresa values('20125845679','ALEXMAR MUSIC S.R.L','Av. porongoche 500 Tienda 2062','aventurplaz@alexmrmusic.pe','959477586','Comercio Industrial');
+Insert into Empresa values('20125845680','CLIC SERVICE','JR. SILVA SANTISTEBAN 196','clicservic@yahoo.com','996688680','Servicios Varios');
+Insert into Empresa values('20125845681','DESYTEC PERU EIRL','AV. HIPOLITO UNANUE N° 300','ventas@desytecperu.pe','975063939','Ventas');
+Insert into Empresa values('20125845682','ARNEBUK PERU SAC','MZ Q2 LT. 34 URB. CIUDAD DEL PESCADOR','franco.padilla@arnebukperu.com','993022806','Industrial');
+Insert into Empresa values('20125845683','LCTR SAC LOGICENTER','Edif. Don Mateo I Of. 303 Cayma','maria.vignes@logicenter.com.pe','997573485','TI');
+Insert into Empresa values('20125845684','BCD S.A.C.','Calle Ruiz Najar N° 223B','jsalazar@bcd.com.pe','996681180','TI');
+Insert into Empresa values('20125845685','IKAMAR ED S.A.C.','Calle Pedro Balza N° 144','contacto@ikamar.com.pe','994877807','Consultora Minera');
+Insert into Empresa values('20125845686','QUIMICA SUIZA SA','Calle Olivares N° 784','contactrrhh@quimsuiza.pe','997757780','Fármacos');
+Insert into Empresa values('20125845687','EDB S.A.C.','Calle OcatvioMuñoz Najar N° 223B','contactEDB@edb.com.pe','944787780','Agencia y Turismo');
+
+Insert into PersonalAutorizado values('41122545','Celia Zezé','Marticorena','López','985447458','cezeml@peruanainf.com.pe','1',current_date,'20125845678');
+Insert into PersonalAutorizado values('41110025','Eduardo','Trinidad','Gutierrez','999554478','edutrim@alexmrmusic.pe','1',current_date,'20125845679');
+Insert into PersonalAutorizado values('78855440','Katherine','Solier','Salomé','013560358','kasl@yahoo.com','1',current_date,'20125845680');
+Insert into PersonalAutorizado values('72211400','Dalia','Cáceres','Rojas','014588744','decr@desytecperu.pe','1',current_date,'20125845681');
+Insert into PersonalAutorizado values('40025488','Melanie','Saavedra','Salomé','977744512','melsas@arnebukperu.com','1',current_date,'20125845682');
+Insert into PersonalAutorizado values('17785441','Carmela','Romero','Aguilar','988774584','caroa@logicenter.com.pe','1',current_date,'20125845683');
+Insert into PersonalAutorizado values('41212254','Jessica','Tejeda','Delgado','98870025','jessita@bcd.com.pe','1',current_date,'20125845684');
+Insert into PersonalAutorizado values('41312255','Diana','Portilla','Rodriguez','945225487','diportill@ikamar.com.pe','1',current_date,'20125845685');
+Insert into PersonalAutorizado values('41412256','Bertha','Aroste','Rimascca','978554110','berar@quimsuiza.pe','1',current_date,'20125845686');
+Insert into PersonalAutorizado values('41512257','Cristina','Núñez','Yupanqui','013554120','crisnuy@edb.com.pe','1',current_date,'20125845687');
+Insert into PersonalAutorizado values('42612258','Claudia','Núñez','Yupanqui','013554120','claudia@alexmrmusic.com.pe','1',current_date,'20125845679');
+Insert into PersonalAutorizado values('42726247','Antonio','Lozano','Dominiguez','913352120','antonio@alexmrmusic.com.pe','1',current_date,'20125845679');
+Insert into PersonalAutorizado values('42136247','Jaime','Fuentes','Távara','922874163','jaime@alexmrmusic.com.pe','1',current_date,'20125845679');

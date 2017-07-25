@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+      <header>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Clarito</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="#">Consultar</a></li>
+              <!-- <li><a href="#">Consultar</a></li> -->
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div id="app1" class="container">
+
+        <h1>Consultar Cliente</h1>
+        <div class="">
+          <form class="form-inline" v-on:submit.prevent id="">
+            <div class="form-group">
+              <label for="co_ruc">Ruc de Empresa</label>
+              <input v-model="empresa_id" type="text" name="empresa_id" placeholder="Ingrese RUC">
+            </div>
+            <button v-on:click="consultarEmpresa" type="submit" class="btn btn-info">Consultar</button>
+            <button v-on:click="mostraEmpresas" type="submit" class="btn btn-info">Mostrar Todos</button>
+          </form>
+        </div>
+        <p v-if="consultarAlert" class="alert alert-info">
+          La empresa consultada no es cliente. Verifca el RUC.
+        </p>
+
+        <table class="table table striped">
+          <thead>
+            <tr>
+              <th>Ruc</th>
+              <th>Razón Social</th>
+              <th>Dirección</th>
+              <th>Correo</th>
+              <th>Teléfono</th>
+              <th>Rubro</th>
+              <!-- <th>Usuarios autorizados</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="empresa in empresas">
+              <td>{{empresa.co_ruc}}</td>
+              <td>{{empresa.no_razons}}</td>
+              <td>{{empresa.no_direccion}}</td>
+              <td>{{empresa.tx_correo}}</td>
+              <td>{{empresa.nu_telefono}}</td>
+              <td>{{empresa.no_rubro}}</td>
+              <!-- <td><i class="glyphicon glyphicon-search"></i></td> -->
+            </tr>
+          </tbody>
+
+        </table>
+
+        <div>
+          <form v-if="consultableDNI" class="form-inline" v-on:submit.prevent>
+            <div class="form-group">
+              <label for="co_dni">Número de DNI</label>
+              <input v-model="dni" type="text" name="empresa_id" placeholder="Ingrese DNI">
+            </div>
+            <button v-on:click="consultarDNI" type="submit" class="btn btn-info">Consultar</button>
+            <button v-on:click="mostrarPersonas" type="submit" class="btn btn-info">Mostrar Todos</button>
+          </form>
+        </div>
+
+        <p v-if="autorizadoAlert" class="alert alert-info">
+          La persona no está autorizada para está operación. Verifca el DNI.
+        </p>
+
+        <table v-if="consultadoDNI" class="table table striped">
+          <thead>
+            <tr>
+              <th>DNI</th>
+              <th>Nombres</th>
+              <th>Apellido Paterno</th>
+              <th>Apellido Materno</th>
+              <th>Teléfono</th>
+              <th>Correo</th>
+              <th>Estado</th>
+              <th>Fecha de Registro</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="persona in personas">
+              <td>{{persona.co_dni}}</td>
+              <td>{{persona.no_nombres}}</td>
+              <td>{{persona.no_apellidopat}}</td>
+              <td>{{persona.no_apellidomat}}</td>
+              <td>{{persona.nu_telefono}}</td>
+              <td>{{persona.tx_correo}}</td>
+              <td>{{persona.tx_estado}}</td>
+              <td>{{persona.fe_fechregistro}}</td>
+              <td>
+                <a href="http://200.10.71.171/TestClaro/default.aspx">
+                  <i class="glyphicon glyphicon-phone" title="Activar Linea"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+      <script src="https://unpkg.com/vue"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.js"></script>
+      <script src="script.js"></script>
+  </body>
+<html>
